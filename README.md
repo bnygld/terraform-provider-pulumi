@@ -1,5 +1,7 @@
 # Terraform Provider Pulumi
 
+The original repo appears to have been abandoned, so I've forked it and will be maintaining it here.
+
 This is the `transcend-io/pulumi` provider [available on the Terraform registry](https://registry.terraform.io/providers/transcend-io/pulumi/latest).
 
 It's goal is to allow terraform projects to consume pulumi outputs from the Pulumi Cloud via data source lookups.
@@ -30,8 +32,8 @@ Usage will often follow the following flow
 terraform {
   required_providers {
     pulumi = {
-      version = "0.0.2"
-      source  = "hashicorp.com/transcend-io/pulumi"
+      version = "0.1.0"
+      source  = "bnygld/pulumi"
     }
   }
 }
@@ -39,8 +41,8 @@ terraform {
 provider "pulumi" {}
 
 data "pulumi_stack_outputs" "stack_outputs" {
-  organization = "transcend-io"
-  project      = "airgap-telemetry-backend"
+  organization = "bnygld"
+  project      = "jeeves"
   stack        = "dev"
 }
 
@@ -49,7 +51,7 @@ output "stack_outputs" {
 }
 ```
 
-This code block tells Terraform to use the `0.0.2` version of the `pulumi` Terraform provider from `transcend-io`. It then declares the `provider`, where you can either supply a Pulumi cloud token directly, or via the `PULUMI_ACCESS_TOKEN` environment variable. Lastly, it looks up the `airgap-telemetry-backend/dev` stack under the `transcend-io` organization and allows Terraform to consume that stack’s outputs. You’ll want to use your own organization, project, and stack names here, of course.
+This code block tells Terraform to use the `0.1.0` version of the `pulumi` Terraform provider from `bnygld`. It then declares the `provider`, where you can either supply a Pulumi cloud token directly, or via the `PULUMI_ACCESS_TOKEN` environment variable. Lastly, it looks up the `jeeves.dev` stack under the `bnygld` organization and allows Terraform to consume that stack’s outputs. You’ll want to use your own organization, project, and stack names here, of course.
 
 And with that, your Terraform modules can now depend on your Pulumi Cloud stacks 😄
 

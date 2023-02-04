@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     pulumi = {
-      version = "0.0.2"
-      source  = "hashicorp.com/transcend-io/pulumi"
+      version = "0.1.0"
+      source  = "bnygld/pulumi"
     }
   }
 }
@@ -10,13 +10,9 @@ terraform {
 provider "pulumi" {}
 
 data "pulumi_stack_outputs" "stack_outputs" {
-  organization = "transcend-io"
-  project      = "airgap-telemetry-backend"
-  stack        = "dev"
-}
-
-output "version" {
-  value = data.pulumi_stack_outputs.stack_outputs.version
+  organization = "bnygld"
+  project      = "jeeves"
+  stack        = "production"
 }
 
 output "stack_outputs" {
